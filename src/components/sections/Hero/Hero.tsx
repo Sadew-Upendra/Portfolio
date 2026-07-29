@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { ChevronDown, Mouse, Volume2 } from "lucide-react";
 
-const IMAGE_SRC = "./hero-workspace.png";
+const IMAGE_SRC = "/images/hero-workspace.png";
 
 const INK = "#EDEAE3";       
 const MUTED = "#B7B2A8";     
