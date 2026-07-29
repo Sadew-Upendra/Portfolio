@@ -1,7 +1,7 @@
-import Certificates from "../components/Certificates";
-import Education from "../components/Education";
-import Hero from "../components/Hero";
-import Projects from "../components/Projects";
+import Certificates from "../components/sections/Certificates/Certificates";
+import Education from "../components/sections/Education/Education";
+import Hero from "../components/sections/Hero/Hero";
+import Projects from "../components/sections/Projects/Projects";
 
 export default function Home() {
   return (
