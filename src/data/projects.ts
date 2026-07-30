@@ -4,33 +4,36 @@ export const projects: Project[] = [
   {
     slug: "foodieexpress",
     title: "FoodieExpress",
+    subtitle: "Online Food Ordering System",
     summary:
       "Full-stack food ordering system with JWT auth and a layered Spring Boot backend.",
-    image: "/images/projects/foodieexpress.jpg",
-    tech: ["Spring Boot", "MySQL", "React", "TypeScript"],
+    image: "/images/projects/foodieexpress.png",
+    tech: ["Spring Boot", "MySQL", "React", "TypeScript", "JWT", "REST API"],
     repo: {
       type: "split",
-      frontend: "https://github.com/Sadew-Upendra/foodieexpress-frontend",
-      backend: "https://github.com/Sadew-Upendra/foodieexpress-backend",
+      frontend: "https://github.com/Sadew-Upendra/FoodOrder-Frontend",
+      backend: "https://github.com/Sadew-Upendra/FoodOrder-Backend",
     },
-    live: null,
+    live: { type: "website", url: "https://foodiexpress.vercel.app" },
     featured: true,
   },
   {
     slug: "gearrentpro",
     title: "GearRentPro",
+    subtitle: "Equipment Rental Platform",
     summary: "Equipment rental platform handling real-world booking and inventory flows.",
-    image: "/images/projects/gearrentpro.jpg",
-    tech: ["React", "Node.js", "MongoDB"],
-    repo: { type: "single", url: "https://github.com/Sadew-Upendra/gearrentpro" },
-    live: { type: "website", url: "https://gearrentpro.vercel.app" },
+    image: "/images/projects/gearrentpro.png",
+    tech: ["Java", "JavaFX", "MySQL", "Layered Architecture", "Desktop App"],
+    repo: { type: "single", url: "https://github.com/Sadew-Upendra/GearRent_Pro" },
+    live: null,
   },
   {
     slug: "sarasavi-library-ms",
-    title: "Sarasavi Library Management System",
+    title: "Sarasavi Library System",
+    subtitle: "Library Management System",
     summary:
       "Desktop library system with three-tier architecture, reservation copy-locking, and role-based access.",
-    image: "/images/projects/sarasavi.jpg",
+    image: "/images/projects/sarasavi.png",
     tech: ["C#", ".NET Framework", "SQL Server"],
     repo: {
       type: "single",
@@ -40,13 +43,26 @@ export const projects: Project[] = [
   },
   {
     slug: "e-channeling",
-    title: "E-Channeling Booking System",
+    title: "Medi Connect",
+    subtitle: "E-channeling Booking System",
+    emoji: "🏥",
     summary:
       "Doctor appointment booking system built with an 8-member team — contributed the booking page.",
-    image: null,
+    image: "/images/projects/medi-connect.png",
     tech: ["HTML", "CSS", "JavaScript", "jQuery"],
     repo: null,
-    live: null,
+    live: { type: "website", url: "https://medi-connect-opal-two.vercel.app/" },
+  },
+  {
+    slug: "web-calculator",
+    title: "Web Calculator",
+    subtitle: "Simple Web-based Calculator",
+    summary:
+      "Modern, responsive web calculator with smooth animations and clean UI built with vanilla web technologies.",
+    image: "/images/projects/web-calculator.png",
+    tech: ["HTML", "CSS", "JavaScript"],
+    repo: null,
+    live: { type: "website", url: "https://simple-calculator-ruddy-six.vercel.app/" },
   },
 ];
 

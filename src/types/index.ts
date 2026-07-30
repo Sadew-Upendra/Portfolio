@@ -51,6 +51,8 @@ export type LivePreview =
 export interface Project {
   slug: string;
   title: string;
+  subtitle?: string;
+  emoji?: string;
   summary: string;
   image: string | null;
   tech: string[];
