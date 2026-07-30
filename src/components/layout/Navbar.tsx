@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import { SoundToggle } from "./SoundToggle";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
 
@@ -50,6 +51,14 @@ export function Navbar() {
           >
             GET IN TOUCH
           </a>
+          <SoundToggle src={siteConfig.heroAudio} />
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((v) => !v)}
+            className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink/60 text-ink md:hidden"
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </nav>
 
