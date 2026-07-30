@@ -1,77 +1,112 @@
 "use client";
 
-import { motion } from "motion/react";
-import { Award } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Award, ChevronDown, ChevronUp, ArrowUpRight } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { certificates } from "@/data/certificates";
 
-const INK = "#EDEAE3";
-const MUTED = "#B7B2A8";
-const LAMP = "#E8A340";
-const NAVY = "#232B3A";
+const DEFAULT_COUNT = 3;
 
-const CERTIFICATES = [
-  {
-    title: "Comprehensive Master Java Developer",
-    issuer: "IJSE",
-    year: "2026",
-  },
-  {
-    title: "Python for Beginners",
-    issuer: "University of Moratuwa",
-    year: "2025",
-  },
-];
+function CertificateCard({ cert, index }: { cert: typeof certificates[number]; index: number }) {
+  const [imgError, setImgError] = useState(false);
 
-export default function Certificates() {
   return (
-    <section id="certificates" className="bg-black px-6 md:px-12 py-28 max-w-5xl mx-auto" style={{ color: INK }}>
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        style={{ fontFamily: "Poppins, sans-serif", color: LAMP }}
-        className="text-xs tracking-widest mb-4"
-      >
-        CREDENTIALS
-      </motion.p>
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-        style={{ fontFamily: "Poppins, sans-serif", fontWeight: 800 }}
-        className="text-3xl md:text-4xl mb-16"
-      >
-        Certificates
-      </motion.h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface transition-all duration-300 hover:border-lamp/40 hover:shadow-md"
+    >
+  
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-navy/60 border-b border-border/60">
+        {cert.image && !imgError ? (
+          <>
+            <img
+              src={cert.image}
+              alt={cert.title}
+              onError={() => setImgError(true)}
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-transparent opacity-60" />
+          </>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-surface/30">
+            <Award size={28} className="text-lamp/70" />
+          </div>
+        )}
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {CERTIFICATES.map((cert, i) => (
-          <motion.div
-            key={cert.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-            className="rounded-2xl p-6 flex items-start gap-4"
-            style={{ backgroundColor: NAVY }}
-          >
-            <div
-              className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: LAMP }}
-            >
-              <Award size={20} color="#1A1206" />
-            </div>
-            <div>
-              <h3 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700 }} className="text-lg leading-snug">
-                {cert.title}
-              </h3>
-              <p className="mt-1 text-sm" style={{ color: MUTED }}>
-                {cert.issuer} · {cert.year}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+        {cert.year && (
+          <span className="absolute top-3 right-3 rounded-md border border-border/80 bg-bg/80 px-2 py-0.5 font-mono text-[11px] font-medium text-muted backdrop-blur-md">
+            {cert.year}
+          </span>
+        )}
       </div>
+
+      <div className="flex flex-1 flex-col justify-between p-5">
+        <div>
+          <h3 className="font-display text-base font-bold text-ink leading-snug transition-colors">
+            {cert.title}
+          </h3>
+          <p className="mt-1 text-xs font-semibold text-lamp">{cert.issuer}</p>
+        </div>
+
+        {cert.credentialUrl && (
+          <div className="mt-4 pt-3 border-t border-border/40">
+            <a
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-mono text-xs text-muted transition-colors hover:text-lamp"
+            >
+              <span>View credential</span>
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+export function Certificates() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? certificates : certificates.slice(0, DEFAULT_COUNT);
+  const hiddenCount = certificates.length - DEFAULT_COUNT;
+
+  return (
+    <section id="certificates" className="scroll-mt-20 bg-surface/30 py-24 border-y border-border/40">
+      <Container>
+        <SectionHeading eyebrow="CREDENTIALS" title="Certificates" />
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((cert, i) => (
+            <CertificateCard key={cert.id || i} cert={cert} index={i} />
+          ))}
+        </div>
+
+        {hiddenCount > 0 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-5 py-2 text-xs font-mono font-medium text-ink backdrop-blur-sm transition-all duration-300 hover:border-lamp hover:bg-lamp/5 hover:text-lamp"
+            >
+              {showAll ? (
+                <>
+                  Show Less <ChevronUp size={14} />
+                </>
+              ) : (
+                <>
+                  Show All <ChevronDown size={14} />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+      </Container>
     </section>
   );
 }
