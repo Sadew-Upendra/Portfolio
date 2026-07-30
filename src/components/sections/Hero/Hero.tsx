@@ -1,119 +1,84 @@
 "use client";
 
-import { motion } from "motion/react";
-import { ChevronDown, Mouse, Volume2 } from "lucide-react";
-
-const IMAGE_SRC = "/images/hero-workspace.png";
-
-const INK = "#EDEAE3";       
-const MUTED = "#B7B2A8";     
-const LAMP = "#E8A340";      
-const NAVY = "#232B3A";     
+import { motion } from "framer-motion";
+import { ChevronDown, Mouse, Download } from "lucide-react";
+import { siteConfig } from "@/data/site";
+import { TypewriterTitle } from "./TypewriterTitle";
 
 function SceneBackground() {
   return (
     <div className="absolute inset-0">
       <img
-        src={IMAGE_SRC}
-        alt="3D render of a developer workspace at night, character at desk with dual monitors"
-        className="w-full h-full object-cover"
+        src="/images/hero-workspace.png"
+        alt="3D render of a developer workspace at night"
+        className="h-full w-full object-cover"
       />
-      {/* Gradient so text stays readable over the image */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.55) 45%, rgba(10,10,12,0.15) 70%, rgba(10,10,12,0) 100%)",
+            "linear-gradient(90deg, rgba(10,10,12,0.94) 0%, rgba(10,10,12,0.6) 45%, rgba(10,10,12,0.15) 70%, rgba(10,10,12,0) 100%)",
         }}
       />
     </div>
   );
 }
 
-export default function Hero() {
+export function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-black">
       <SceneBackground />
 
-      {/* Nav */}
-      <nav className="relative z-20 flex items-center justify-between px-6 md:px-12 pt-8">
-        <div
-          className="hidden md:flex items-center gap-2 rounded-full px-2 py-2 backdrop-blur-sm"
-          style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
-        >
-          {["ABOUT", "PROJECTS", "CONTACT"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-colors hover:bg-white/10"
-              style={{ color: INK }}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            className="px-6 py-3 rounded-full font-bold text-sm shadow-md hover:brightness-110 transition"
-            style={{ backgroundColor: LAMP, color: "#1A1206" }}
-          >
-            GET IN TOUCH
-          </button>
-          <button
-            aria-label="Toggle sound"
-            className="w-11 h-11 rounded-full flex items-center justify-center border-2"
-            style={{ borderColor: INK, color: INK }}
-          >
-            <Volume2 size={18} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-20 md:pt-32">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-content flex-col justify-center px-6 pt-12 pb-16 md:px-12 md:pt-20">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-xl"
         >
-          <h1
-            style={{ fontFamily: "Poppins, sans-serif", fontWeight: 900, color: INK }}
-            className="text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95]"
-          >
-            Sadew
+
+          <h1 className="mt-4 font-display text-6xl font-black leading-[0.95] md:text-7xl lg:text-[5.5rem]">
+            {siteConfig.name.split(" ")[0]}
             <br />
-            Upendra
+            {siteConfig.name.split(" ").slice(1).join(" ")}
           </h1>
 
-          <motion.span
-            initial={{ rotate: 0 }}
-            animate={{ rotate: -4 }}
-            transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-            className="inline-block mt-6 px-5 py-2 rounded-md font-bold tracking-wide"
-            style={{ backgroundColor: NAVY, color: LAMP, fontFamily: "Poppins, sans-serif" }}
-          >
-            FULL-STACK DEVELOPER
-          </motion.span>
+          <div className="mt-4 text-2xl text-lamp md:text-3xl lg:text-4xl">
+            <TypewriterTitle roles={siteConfig.roles} />
+          </div>
 
-          <p className="mt-8 max-w-sm text-base md:text-lg" style={{ color: MUTED }}>
-            CS undergraduate crafting full-stack apps — Spring Boot,
-            React, and everything in between.
-          </p>
+          <p className="mt-8 max-w-sm text-base text-muted md:text-lg">{siteConfig.tagline}</p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#projects"
+              className="rounded-full bg-lamp px-6 py-3 text-sm font-bold text-[#1A1206] shadow-md transition hover:brightness-110"
+            >
+              VIEW PROJECTS
+            </a>
+            <a
+              href={siteConfig.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink/60 px-6 py-3 text-sm font-bold text-ink transition hover:border-lamp hover:text-lamp"
+            >
+              <Download size={16} />
+              DOWNLOAD CV
+            </a>
+          </div>
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
-      <motion.div
+      <motion.a
+        href="#about"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        className="relative z-10 flex flex-col items-center gap-1 mt-10 pb-10"
-        style={{ color: INK }}
+        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-ink"
+        aria-label="Scroll to About section"
       >
         <Mouse size={20} />
         <ChevronDown size={16} />
-      </motion.div>
+      </motion.a>
     </section>
   );
 }
