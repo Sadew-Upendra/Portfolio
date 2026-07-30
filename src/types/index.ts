@@ -51,13 +51,23 @@ export type LivePreview =
 export interface Project {
   slug: string;
   title: string;
-  subtitle?: string;
-  emoji?: string;
   summary: string;
   image: string | null;
   tech: string[];
   repo: RepoLinks | null;
   live: LivePreview;
+  featured?: boolean;
+  // Full case-study fields — optional, used by the project detail page.
+  // Not filled in yet for any current project, but the page and types
+  // are ready for when a larger project needs them.
+  details?: {
+    overview: string;
+    problem: string;
+    approach: string;
+    challenges: string[];
+    architecture?: string;
+    gallery?: string[];
+  };
 }
 
 export interface Certificate {
