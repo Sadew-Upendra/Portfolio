@@ -8,6 +8,7 @@ import { Education } from "@/components/sections/Education/Education";
 import { GithubStats } from "@/components/sections/GithubStats/GithubStats";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { Projects } from "@/components/sections/Projects/Projects";
+import { Skills } from "@/components/sections/Skills/Skills";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero/>
         <About/>
         <Education/>
+        <Skills/>
         <Projects/>
         <Certificates/>
         <GithubStats/>
