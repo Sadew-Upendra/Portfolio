@@ -6,7 +6,7 @@ export const certificates: Certificate[] = [
     title: "Comprehensive Master Java Developer",
     issuer: "IJSE",
     year: "2026",
-    image: "/images/certificates/cert4.jpg",
+    image: "/images/certificates/ijse-cmjd.jpg",
   },
   /* {
     id: "imbs-dit",
@@ -20,20 +20,20 @@ export const certificates: Certificate[] = [
     title: "Docker for Absolute Beginners with Hands-on Projects",
     issuer: "CodeKu DevOps Academy",
     year: "2026",
-    image: "/images/certificates/cert1.jpg",
+    image: "/images/certificates/docker-codeku.jpg",
   },
   {
     id: "simplilearn",
     title: "Azure Fundamentals",
     issuer: "Simplilearn",
     year: "2025",
-    image: "/images/certificates/cert2.jpg",
+    image: "/images/certificates/azure-fundamentals-simplilearn.jpg",
   },
   {
     id: "uom-olp",
     title: "Python for Beginners",
     issuer: "University of Moratuwa - Open Learning Platform",
     year: "2025",
-    image: "/images/certificates/cert3.jpg",
+    image: "/images/certificates/python-beginners-uom.jpg",
   },
 ];
