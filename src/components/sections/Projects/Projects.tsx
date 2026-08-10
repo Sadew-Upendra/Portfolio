@@ -15,7 +15,7 @@ export function Projects() {
   const hiddenCount = projects.length - DEFAULT_COUNT;
 
   return (
-    <section id="projects" className="scroll-mt-24 py-28">
+    <section id="projects" className="scroll-mt-20 py-20 md:py-32">
       <Container>
         <SectionHeading eyebrow="SELECTED WORK" title="Projects" />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -31,13 +31,10 @@ export function Projects() {
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-semibold text-ink transition hover:border-lamp hover:text-lamp"
             >
               {showAll ? (
-                <>
-                  Show Less <ChevronUp size={16} />
-                </>
+                <>Show Less <ChevronUp size={16} /></>
               ) : (
-                <>
-                  See More ({hiddenCount}) <ChevronDown size={16} />
-                </>
+                // <>See More ({hiddenCount}) <ChevronDown size={16} /></>
+                <>See More <ChevronDown size={16} /></>
               )}
             </button>
           </div>
