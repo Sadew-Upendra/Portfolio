@@ -80,3 +80,33 @@ export interface Certificate {
   image: string | null;
   credentialUrl?: string;
 }
+
+export interface ArticleItem {
+  id: string;
+  title: string;
+  summary: string;
+  url: string;
+  date: string;
+}
+
+export interface EventItem {
+  id: string;
+  title: string;
+  role: string;
+  date: string;
+  description: string;
+}
+
+export interface VolunteeringItem {
+  id: string;
+  organization: string;
+  role: string;
+  period: string;
+  description: string;
+}
+
+export interface GalleryImage {
+  id: string;
+  src: string;
+  caption: string;
+}
