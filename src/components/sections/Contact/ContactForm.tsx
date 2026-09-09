@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import emailjs from "@emailjs/browser";
 import { Send, Loader2, CheckCircle2, XCircle } from "lucide-react";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -10,7 +10,9 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -28,7 +30,25 @@ export function ContactForm() {
       return;
     }
 
-    
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email, 
+          message: form.message,
+        },
+        publicKey
+      );
+
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      setStatus("error");
+    }
   };
 
   return (
@@ -47,6 +67,7 @@ export function ContactForm() {
           placeholder="Your name"
         />
       </div>
+
       <div>
         <label htmlFor="email" className="mb-1.5 block text-sm text-muted">
           Email
@@ -62,6 +83,7 @@ export function ContactForm() {
           placeholder="you@example.com"
         />
       </div>
+
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm text-muted">
           Message
@@ -99,6 +121,7 @@ export function ContactForm() {
           <CheckCircle2 size={16} /> Message sent — thanks for reaching out!
         </p>
       )}
+
       {status === "error" && (
         <p className="flex items-center gap-2 text-sm text-red-400">
           <XCircle size={16} /> Something went wrong. Please try again or email directly.
