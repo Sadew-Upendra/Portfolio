@@ -21,10 +21,10 @@ export const siteConfig = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/Sadew-Upendra", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/sadew-upendra", icon: "linkedin" },
-  { label: "Email", href: "mailto:sadewupendra@gmail.com", icon: "email" },
-  { label: "Phone", href: "tel:+94719869879", icon: "phone" },
+  { label: "sadewupendra@gmail.com", href: "mailto:sadewupendra@gmail.com", icon: "email" },
+  { label: "+94 71 986 9879", href: "tel:+94719869879", icon: "phone" },
+  { label: "github.com/Sadew-Upendra", href: "https://github.com/Sadew-Upendra", icon: "github" },
+  { label: "linkedin.com/in/sadew-upendra", href: "https://linkedin.com/in/sadew-upendra", icon: "linkedin" },
 ];
 
 export const contactDetails = {
