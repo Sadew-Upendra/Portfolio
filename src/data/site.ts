@@ -32,3 +32,8 @@ export const contactDetails = {
   phone: "+94 71 986 9879",
   address: "Sri Lanka",
 };
+
+export const footerQuote = {
+  text: "Simplicity is prerequisite for reliability.",
+  author: "Edske Dijkstra",
+};
