@@ -23,6 +23,13 @@ export const certificates: Certificate[] = [
     image: "/images/certificates/docker-codeku.jpg",
   },
   {
+    id: "imbs-dit",
+    title: "Diploma in Information & Communication Technology",
+    issuer: "IMBS Green Campus",
+    year: "2026",
+    image: "/images/certificates/imbs_dit.jpg",
+  },
+  {
     id: "simplilearn",
     title: "Azure Fundamentals",
     issuer: "Simplilearn",
@@ -35,5 +42,12 @@ export const certificates: Certificate[] = [
     issuer: "University of Moratuwa - Open Learning Platform",
     year: "2025",
     image: "/images/certificates/python-beginners-uom.jpg",
+  },
+  {
+    id: "uom-web-1",
+    title: "Web Design for Beginners",
+    issuer: "University of Moratuwa - Open Learning Platform",
+    year: "2026",
+    image: "/images/certificates/web_beginner-uom.jpg",
   },
 ];
