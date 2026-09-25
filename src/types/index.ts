@@ -110,3 +110,9 @@ export interface GalleryImage {
   src: string;
   caption: string;
 }
+
+export interface ChatQA {
+  question: string; // shown as a tappable quick-question chip
+  keywords: string[]; // matched against free-typed questions too
+  answer: string;
+}
