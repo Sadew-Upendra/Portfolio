@@ -1,5 +1,6 @@
 import { Poppins, Inter, JetBrains_Mono } from "next/font/google";
 import './globals.css'
+import { SiteLoader } from "@/components/layout/SiteLoader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="bg-bg text-ink font-body antialiased">
+        <SiteLoader/>
         {children}
       </body>
     </html>
