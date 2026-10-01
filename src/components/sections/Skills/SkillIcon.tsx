@@ -71,6 +71,7 @@ const iconMap: Record<string, IconConfig> = {
   csharp: { component: TbBrandCSharp, colorClass: "text-[#512BD4]" },
   python: { component: SiPython, colorClass: "text-[#3776AB]" },
   html5: { component: SiHtml5, colorClass: "text-[#E34F26]" },
+  html: { component: SiHtml5, colorClass: "text-[#E34F26]" },
   css3: { component: SiCss, colorClass: "text-[#1572B6]" },
 
   // Frontend & Backend
