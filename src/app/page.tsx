@@ -28,7 +28,7 @@ export default function Home() {
         <Contact/>
       </main>
       <Footer/>
-      <Chatbot/>
+      {/* <Chatbot/> */}
       <ScrollToTopButton/>
     </>
   )
