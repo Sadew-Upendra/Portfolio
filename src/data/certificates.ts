@@ -8,19 +8,19 @@ export const certificates: Certificate[] = [
     year: "2026",
     image: "/images/certificates/ijse-cmjd.jpg",
   },
-  /* {
-    id: "imbs-dit",
-    title: "Diploma in Information Technology",
-    issuer: "IMBS Green Campus",
-    year: "2024",
-    image: null,
-  }, */
   {
     id: "codeku",
     title: "Docker for Absolute Beginners with Hands-on Projects",
     issuer: "CodeKu DevOps Academy",
     year: "2026",
     image: "/images/certificates/docker-codeku.jpg",
+  },
+  {
+    id: "codeku-kubernetes",
+    title: "Kubernetes From 10,000 Feet",
+    issuer: "CodeKu DevOps Academy",
+    year: "2026",
+    image: "/images/certificates/kubernetes-10000feet-codeku.jpg",
   },
   {
     id: "imbs-dit",
