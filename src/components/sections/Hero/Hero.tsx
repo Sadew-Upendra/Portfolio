@@ -8,30 +8,48 @@ import { TypewriterTitle } from "./TypewriterTitle";
 function SceneBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/images/hero-workspace-1.png"
-        className="h-full w-full object-cover"
-      >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
-        {/* Fallback image in case the video format is unsupported */}
-        <img
-          src="/images/hero-workspace-1.png"
-          alt="Developer workspace background"
+      {/* Desktop View: Video Background */}
+      <div className="hidden md:block h-full w-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/hero-workspace-1.png"
           className="h-full w-full object-cover"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+          {/* Fallback image in case the video format is unsupported */}
+          <img
+            src="/images/hero-workspace-1.png"
+            alt="Developer workspace background"
+            className="h-full w-full object-cover"
+          />
+        </video>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.65) 45%, rgba(10,10,12,0.2) 70%, rgba(10,10,12,0.1) 100%)",
+          }}
         />
-      </video>
+      </div>
 
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.65) 45%, rgba(10,10,12,0.2) 70%, rgba(10,10,12,0.1) 100%)",
-        }}
-      />
+      {/* Mobile View: Dedicated Vertical Image Background */}
+      <div className="block md:hidden h-full w-full relative">
+        <img
+          src="/images/hero-workspace-mobile.png"
+          alt="Developer workspace vertical portrait"
+          className="h-full w-full object-cover object-center"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,10,12,0.9) 0%, rgba(10,10,12,0.7) 50%, rgba(10,10,12,0.95) 100%)",
+          }}
+        />
+      </div>
     </div>
   );
 }
