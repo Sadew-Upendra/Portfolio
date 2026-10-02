@@ -97,12 +97,21 @@ export interface EventItem {
   description: string;
 }
 
-export interface VolunteeringItem {
+export interface VolunteerRole {
+  title: string;
+  period: string;
+  badge?: string;
+  description: string;
+  highlights?: string[];
+}
+
+export interface VolunteerOrganization {
   id: string;
   organization: string;
-  role: string;
-  period: string;
-  description: string;
+  location: string;
+  mainBadge: string;
+  overallPeriod: string;
+  roles: VolunteerRole[];
 }
 
 export interface GalleryImage {
