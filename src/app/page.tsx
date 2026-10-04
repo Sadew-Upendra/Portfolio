@@ -12,6 +12,7 @@ import { Projects } from "@/components/sections/Projects/Projects";
 import { Skills } from "@/components/sections/Skills/Skills";
 import { Chatbot } from "@/components/chatbot/Chatbot";
 import { Experience } from "@/components/sections/Experience/Experience";
+import { Services } from "@/components/sections/Services/Services";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <Certificates/>
         <GithubStats/>
         <GallerySection/>
+        <Services/>
         <Contact/>
       </main>
       <Footer/>
