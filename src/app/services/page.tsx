@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Cloud, 
-  Code2, 
-  Layers, 
   CheckCircle2, 
   Star, 
   Send, 
@@ -14,43 +11,59 @@ import {
   ChevronLeft, 
   ChevronRight,
   MessageSquareQuote,
-  Sparkles,
-  Terminal,
-  Trash2
+  Terminal
 } from "lucide-react";
-import { Navbar } from "@/components/layout/Navbar";
+import { ServiceNavbar } from "@/components/layout/ServiceNavbar";
 import { Container } from "@/components/ui/Container";
 import { services } from "@/data/services";
-import { testimonials } from "@/data/testimonials";
-import { TestimonialItem } from "@/types";
 import { Contact } from "@/components/sections/Contact/Contact";
+import { supabase } from "@/lib/supabase";
+
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  comment: string;
+  rating: number;
+  created_at?: string;
+}
 
 export default function ServicesPage() {
-  // Testimonials / Feedback State
   const [feedbacks, setFeedbacks] = useState<TestimonialItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // New Feedback Form State
+  // Form State
   const [formData, setFormData] = useState({ name: "", role: "", comment: "", rating: 5 });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Load local storage or default data on mount
-  useEffect(() => {
-    const saved = localStorage.getItem("devops_portfolio_feedback");
-    if (saved) {
-      try {
-        setFeedbacks(JSON.parse(saved));
-      } catch (e) {
-        setFeedbacks(testimonials);
+  // 1. Fetch Realtime Feedback from Supabase Database
+  const fetchFeedbacks = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching testimonials:", error.message);
+      } else if (data) {
+        setFeedbacks(data as TestimonialItem[]);
       }
-    } else {
-      setFeedbacks(testimonials);
-      localStorage.setItem("devops_portfolio_feedback", JSON.stringify(testimonials));
+    } catch (err) {
+      console.error("Supabase fetch failed:", err);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
-  // Auto-rotate testimonials every 6 seconds
+  useEffect(() => {
+    fetchFeedbacks();
+  }, [fetchFeedbacks]);
+
+  // 2. Auto-rotate Carousel with Safe Bounds
   useEffect(() => {
     if (feedbacks.length <= 1) return;
     const interval = setInterval(() => {
@@ -60,57 +73,53 @@ export default function ServicesPage() {
   }, [feedbacks.length]);
 
   const handleNext = () => {
+    if (feedbacks.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % feedbacks.length);
   };
 
   const handlePrev = () => {
+    if (feedbacks.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + feedbacks.length) % feedbacks.length);
   };
 
-  const handleSubmitFeedback = (e: React.FormEvent) => {
+  // 3. Submit Feedback directly to Database
+  const handleSubmitFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.comment.trim()) return;
 
     setIsSubmitting(true);
 
-    const newEntry: TestimonialItem = {
-      id: `fb-${Date.now()}`,
+    const payload = {
       name: formData.name.trim(),
       role: formData.role.trim() || "Peer / Visitor",
       comment: formData.comment.trim(),
       rating: formData.rating,
-      createdAt: new Date().toISOString().split("T")[0],
     };
 
-    setTimeout(() => {
-      const updated = [newEntry, ...feedbacks];
-      setFeedbacks(updated);
-      localStorage.setItem("devops_portfolio_feedback", JSON.stringify(updated));
+    const { error } = await supabase.from("testimonials").insert([payload]);
+
+    if (error) {
+      console.error("Error inserting testimonial:", error.message);
+    } else {
       setFormData({ name: "", role: "", comment: "", rating: 5 });
-      setIsSubmitting(false);
       setIsFormOpen(false);
-      setCurrentIndex(0); // Jump to new feedback
-    }, 300);
-  };
-
-  const handleDeleteFeedback = (id: string) => {
-    const updated = feedbacks.filter((item) => item.id !== id);
-    setFeedbacks(updated);
-    localStorage.setItem("devops_portfolio_feedback", JSON.stringify(updated));
-    if (currentIndex >= updated.length) {
-      setCurrentIndex(Math.max(0, updated.length - 1));
+      await fetchFeedbacks(); // Refresh stream
+      setCurrentIndex(0); // Reset carousel to newly posted feedback
     }
+
+    setIsSubmitting(false);
   };
 
+  // Ensure current feedback is safe from out-of-bounds errors
   const currentFeedback = feedbacks[currentIndex] || feedbacks[0];
 
   return (
     <>
-      <Navbar />
+      <ServiceNavbar />
       <main className="min-h-screen pb-24 pt-32 md:pt-36 bg-bg">
         <Container className="max-w-7xl px-4 sm:px-6">
           
-          {/* Main Section Header */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +137,7 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          {/* Minimal Professional Services Grid */}
+          {/* Minimal Services List Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-24">
             {services.map((service, index) => (
               <motion.div
@@ -139,7 +148,6 @@ export default function ServicesPage() {
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.04] bg-[#0e0e11] p-6 sm:p-7 shadow-[-4px_-4px_12px_rgba(255,255,255,0.015),5px_5px_12px_rgba(0,0,0,0.6)] hover:bg-[#121216] hover:border-white/[0.08] transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Category Pill */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-[9px] font-bold tracking-widest text-lamp uppercase bg-[#0A0A0C] border border-lamp/20 px-2.5 py-1 rounded-md">
                       {service.category}
@@ -149,17 +157,14 @@ export default function ServicesPage() {
                     </span>
                   </div>
 
-                  {/* Title */}
                   <h3 className="font-display text-lg font-bold text-ink group-hover:text-white transition-colors duration-200">
                     {service.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="mt-2.5 text-xs sm:text-sm text-muted/90 leading-relaxed font-sans">
                     {service.description}
                   </p>
 
-                  {/* Deliverables List */}
                   {service.deliverables && service.deliverables.length > 0 && (
                     <ul className="mt-4 space-y-2 border-t border-white/[0.04] pt-3.5">
                       {service.deliverables.map((item, idx) => (
@@ -172,7 +177,6 @@ export default function ServicesPage() {
                   )}
                 </div>
 
-                {/* Tech Stack Footer */}
                 {service.skills && service.skills.length > 0 && (
                   <div className="mt-6 border-t border-white/[0.04] pt-3 flex flex-wrap gap-1.5">
                     {service.skills.map((skill) => (
@@ -189,10 +193,8 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          {/* Testimonials Rotating Showcase */}
+          {/* Testimonials Showcase */}
           <div className="border-t border-white/[0.06] pt-16">
-            
-            {/* Testimonial Header Row */}
             <div className="flex flex-wrap items-end justify-between gap-4 mb-10 border-l-2 border-lamp/60 pl-4 sm:pl-6">
               <div>
                 <p className="font-mono text-[11px] font-bold tracking-[0.25em] text-lamp uppercase">
@@ -203,7 +205,6 @@ export default function ServicesPage() {
                 </h2>
               </div>
 
-              {/* Action Button to trigger feedback form modal */}
               <button
                 onClick={() => setIsFormOpen(true)}
                 className="inline-flex items-center gap-2 font-mono text-xs font-bold text-lamp bg-lamp/10 border border-lamp/20 px-4 py-2.5 rounded-xl hover:bg-lamp/20 transition-all duration-200"
@@ -213,13 +214,16 @@ export default function ServicesPage() {
               </button>
             </div>
 
-            {/* Circular / Rotating Carousel Container */}
-            {feedbacks.length > 0 && (
+            {/* Rotating Testimonial Viewport */}
+            {isLoading ? (
+              <div className="rounded-2xl border border-white/[0.06] bg-[#0e0e11] p-8 text-center font-mono text-xs text-muted/60">
+                LOADING_TESTIMONIALS...
+              </div>
+            ) : feedbacks.length > 0 && currentFeedback ? (
               <div className="relative rounded-2xl border border-white/[0.06] bg-[#0e0e11] p-6 sm:p-10 shadow-[-6px_-6px_16px_rgba(255,255,255,0.015),6px_6px_18px_rgba(0,0,0,0.7)] font-mono">
-                
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={currentFeedback.id}
+                    key={currentFeedback.id || currentIndex}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
@@ -227,32 +231,20 @@ export default function ServicesPage() {
                     className="flex flex-col justify-between space-y-6"
                   >
                     <div>
-                      {/* Top Row: Stars & Rating */}
                       <div className="flex items-center justify-between border-b border-white/[0.04] pb-4">
                         <div className="flex items-center gap-1.5 text-lamp">
-                          {[...Array(currentFeedback.rating)].map((_, i) => (
+                          {[...Array(currentFeedback.rating || 5)].map((_, i) => (
                             <Star key={i} size={14} className="fill-lamp" />
                           ))}
                         </div>
-                        <div className="flex items-center gap-3">
-                          <MessageSquareQuote size={20} className="text-white/10" />
-                          <button
-                            onClick={() => handleDeleteFeedback(currentFeedback.id)}
-                            className="text-muted/40 hover:text-red-400 transition-colors"
-                            title="Delete Entry"
-                          >
-                            <Trash2 size={13} />
-                          </button>
-                        </div>
+                        <MessageSquareQuote size={20} className="text-white/10" />
                       </div>
 
-                      {/* Comment */}
                       <p className="mt-5 text-sm sm:text-base text-muted/95 font-sans leading-relaxed italic">
                         "{currentFeedback.comment}"
                       </p>
                     </div>
 
-                    {/* Author Metadata */}
                     <div className="flex items-center justify-between pt-2">
                       <div>
                         <h4 className="font-display text-sm sm:text-base font-bold text-ink">
@@ -263,7 +255,7 @@ export default function ServicesPage() {
                         </p>
                       </div>
 
-                      {/* Controls / Rotation Dots */}
+                      {/* Rotation Controls */}
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1">
                           {feedbacks.map((_, i) => (
@@ -296,13 +288,17 @@ export default function ServicesPage() {
                   </motion.div>
                 </AnimatePresence>
               </div>
+            ) : (
+              <div className="rounded-2xl border border-white/[0.06] bg-[#0e0e11] p-8 text-center font-mono text-xs text-muted/60">
+                No feedback recorded yet. Be the first to share your thoughts!
+              </div>
             )}
           </div>
 
         </Container>
       </main>
 
-      {/* Realtime Feedback Modal Form */}
+      {/* Realtime Modal Form */}
       <AnimatePresence>
         {isFormOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -312,7 +308,6 @@ export default function ServicesPage() {
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative w-full max-w-md rounded-2xl border border-white/[0.08] bg-[#0c0c0f] p-6 shadow-2xl font-mono"
             >
-              {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
                 <div className="flex items-center gap-2 text-lamp font-bold text-xs uppercase">
                   <Terminal size={14} />
@@ -326,7 +321,6 @@ export default function ServicesPage() {
                 </button>
               </div>
 
-              {/* Form Body */}
               <form onSubmit={handleSubmitFeedback} className="space-y-4">
                 <div>
                   <label className="block text-[10px] text-muted/70 uppercase mb-1">
@@ -396,7 +390,7 @@ export default function ServicesPage() {
                   className="w-full flex items-center justify-center gap-2 rounded-lg bg-lamp/10 border border-lamp/30 px-4 py-2.5 text-xs font-bold text-lamp hover:bg-lamp/20 transition-all duration-200 mt-2"
                 >
                   <Send size={12} />
-                  <span>{isSubmitting ? "POSTING..." : "SUBMIT FEEDBACK"}</span>
+                  <span>{isSubmitting ? "TRANSMITTING..." : "SUBMIT FEEDBACK"}</span>
                 </button>
               </form>
             </motion.div>
