@@ -143,3 +143,22 @@ export interface WorkExperience {
   totalPeriod: string;
   roles: RoleDetail[];
 }
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  category: string;
+  tagline: string;
+  description: string;
+  deliverables: string[];
+  skills: string[];
+}
+
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  comment: string;
+  rating: number;
+  createdAt: string;
+}
