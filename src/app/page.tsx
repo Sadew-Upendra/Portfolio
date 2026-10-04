@@ -11,6 +11,7 @@ import { Hero } from "@/components/sections/Hero/Hero";
 import { Projects } from "@/components/sections/Projects/Projects";
 import { Skills } from "@/components/sections/Skills/Skills";
 import { Chatbot } from "@/components/chatbot/Chatbot";
+import { Experience } from "@/components/sections/Experience/Experience";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero/>
         <About/>
         <Education/>
+        {/* <Experience/> */}
         <Skills/>
         <Projects/>
         <Certificates/>
