@@ -28,7 +28,7 @@ export default function Home() {
         <Certificates/>
         <GithubStats/>
         <GallerySection/>
-        <Services/>
+        {/* <Services/> */}
         <Contact/>
       </main>
       <Footer/>
