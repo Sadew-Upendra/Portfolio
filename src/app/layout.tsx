@@ -24,7 +24,11 @@ const jetbrains = JetBrains_Mono({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html 
+      lang="en" 
+      data-scroll-behavior="smooth"
+      className={`${poppins.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
       <body className="bg-bg text-ink font-body antialiased">
         <SiteLoader/>
         {children}
