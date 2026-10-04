@@ -125,3 +125,21 @@ export interface ChatQA {
   keywords: string[]; // matched against free-typed questions too
   answer: string;
 }
+
+export interface RoleDetail {
+  id: string;
+  role: string;
+  period: string;
+  type: "Full-time" | "Part-time" | "Internship" | "Freelance";
+  description: string;
+  highlights: string[];
+  skills: string[];
+}
+
+export interface WorkExperience {
+  id: string;
+  company: string;
+  location: string;
+  totalPeriod: string;
+  roles: RoleDetail[];
+}
