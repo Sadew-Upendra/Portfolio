@@ -2,6 +2,7 @@ import { SocialLink } from "@/types";
 
 export const siteConfig = {
   name: "Sadew Upendra",
+  siteUrl: "https://your-domain.com",
   tagline:
     "CS undergraduate crafting resilient full-stack architectures — bridging Spring Boot, React, and intelligent systems.",
   // Typing hero titles — edit freely, order matters.
