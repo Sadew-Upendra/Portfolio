@@ -1,115 +1,149 @@
 <div align="center">
 
-# ⚡ Sadew Upendra
+<img src="src/app/favicon.ico" alt="Favicon" width="48" height="48" />
 
-### Computer Science Undergraduate | Developer | Technology Enthusiast
+# Sadew Upendra - Portfolio
 
-*Building software. Exploring AI. Automating the future.*
+*A modern, interactive developer portfolio built with **Next.js, TypeScript, and Tailwind CSS**. Designed to showcase my technical skills, projects, education, and experience through a responsive interface, smooth animations, and interactive 3D elements.*
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit_Website-FFD43B?style=for-the-badge&logo=vercel&logoColor=black)](https://sadewupendra.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-Explore_Projects-181717?style=for-the-badge&logo=github)](https://github.com/Sadew-Upendra)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/sadew-upendra)
-
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=22&duration=3000&pause=1000&color=FFD43B&center=true&vCenter=true&width=650&lines=Full-Stack+Development;DevOps+%26+Cloud+Computing;Artificial+Intelligence+%26+ML;Cybersecurity+%26+Secure+Systems" alt="Typing SVG"/>
+[![Next.js](https://img.shields.io/badge/Next.js-1E293B?style=flat-square&logo=next.js&logoColor=F59E0B)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-1E293B?style=flat-square&logo=typescript&logoColor=F59E0B)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-1E293B?style=flat-square&logo=tailwindcss&logoColor=F59E0B)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-1E293B?style=flat-square&logo=vercel&logoColor=F59E0B)](https://vercel.com/)
 
 </div>
 
+🌐 **Live Demo:** [Visit My Portfolio](https://sadewupendra.vercel.app)
+
 ---
-
-## About Me
-
-I'm a Computer Science undergraduate at the **University of Kelaniya, Sri Lanka**, passionate about building practical software solutions and exploring modern technologies.
-
-My interests span full-stack development, backend engineering, DevOps, cloud computing, Artificial Intelligence, and Cybersecurity.
-
-- 🎓 **Education:** BSc (Hons) in Computer Science
-- 💻 **Core Stack:** Java, Spring Boot, React, TypeScript
-- ⚙️ **Exploring:** Docker, CI/CD, Kubernetes, Cloud & Automation
-- 🧠 **Interests:** AI/ML, secure systems, and scalable architecture
-- 🎯 **Goal:** Build reliable, secure, and intelligent real-world applications
-
-> Learn by building. Improve through experimentation. Turn ideas into solutions.
-
-## Tech Stack
-
-**Languages**
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![CSharp](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-
-**Frameworks & Development**
-
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
-
-**Databases, DevOps & Tools**
-
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
-
-*These badges represent my broader development toolkit and learning interests, not necessarily the technologies used in every project.*
-
-## Featured Projects
-
-| Project | Description | Technologies |
-|---|---|---|
-| 🍔 **FoodieExpress** | Full-stack food ordering application with frontend and backend implementations. | React, TypeScript, Spring Boot, MySQL, JWT |
-| 🧰 **GearRent Pro** | Desktop application for equipment rental and management workflows. | Java, JavaFX, MySQL |
-| 📚 **Sarasavi Library Management System** | Desktop library management application with database-driven workflows. | C#, .NET, SQL Server |
-| 🌐 **Personal Portfolio** | Personal website showcasing my technical journey, skills, and projects. | Next.js, TypeScript, Tailwind CSS |
 
 <!--
-**Explore the projects:**
+## 📸 Preview
 
-- [FoodieExpress Frontend](https://github.com/Sadew-Upendra/FoodOrder-Frontend)
-- [FoodieExpress Backend](https://github.com/Sadew-Upendra/FoodOrder-Backend)
-- [GearRent Pro](https://github.com/Sadew-Upendra/GearRent_Pro)
-- [Sarasavi Library Management System](https://github.com/Sadew-Upendra/Sarasavi_LibraryMS)
-- [Live Portfolio](https://sadew-portfolio.vercel.app)
-- [More on GitHub](https://github.com/Sadew-Upendra)
+<div align="center">
+  <img src="public/images/portfolio-preview.png" alt="Sadew Upendra Portfolio Preview" width="100%" style="border-radius: 8px;" />
+</div>
 
+---
 -->
 
-## 🎓 Education & Certifications
+## ✨ Features
 
-- 🎓 **BSc (Hons) in Computer Science** — *University of Kelaniya*
-- ☕ **Comprehensive Master Java Developer (CMJD)** — *IJSE*
-- 💻 **Diploma in Information Technology** — *IMBS Green Campus*
-- 🐳 **Docker for Absolute Beginners** — *CodeKu DevOps Academy*
-- 🐍 **Python Programming** — *University of Moratuwa Open Learning Platform*
+- **Interactive Hero Section** — Animated role titles and CV download.
+- **About Me** — Personal introduction and background.
+- **Education & Experience** — Timeline-based presentation.
+- **Skills Visualization** — Interactive technology orbit.
+- **Project Showcase** — Project cards with GitHub repositories, live previews, and case studies.
+- **Certifications** — Dedicated section for professional achievements.
+- **GitHub Statistics** — Live profile statistics using the GitHub REST API.
+- **3D Animations** — Interactive 3D elements and animated transitions.
+- **AI-Ready Chatbot** — Portfolio assistant with interactive questions.
+- **Contact Form** — EmailJS-powered messaging and social links.
+- **Additional Pages** — Articles, events, volunteering, and gallery.
+- **SEO Optimized** — Metadata, Open Graph tags, JSON-LD, sitemap, and robots.txt.
+- **Responsive Design** — Optimized for desktop, tablet, and mobile devices.
 
 ---
 
+## 🛠 Tech Stack
 
-## 📫 Let's Connect
+| Category | Technology |
+|---|---|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS |
+| **Animation** | Framer Motion |
+| **Icons** | Lucide React, React Icons / Simple Icons |
+| **Forms & Mail** | EmailJS |
+| **Deployment** | Vercel |
 
-I am actively open to discussing full-stack development, cloud architecture, open-source projects, and engineering collaborations.
+---
 
-- 🌐 **Portfolio:** [sadewupendra.vercel.app](https://sadewupendra.vercel.app)
-- 💻 **GitHub:** [@Sadew-Upendra](https://github.com/Sadew-Upendra)
-- 💼 **LinkedIn:** [Sadew Upendra](https://www.linkedin.com/in/sadew-upendra)
+## 🚀 Getting Started
+
+### Installation
+
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/Sadew-Upendra/Portfolio.git
+cd Portfolio
+```
+
+**2. Install dependencies:**
+
+```bash
+npm install
+```
+**3. Configure Environment Variables:**
+
+Create a `.env.local` file in the root directory and add your credentials:
+
+```env
+NEXT_PUBLIC_GITHUB_USERNAME=your-github-username
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+Get EmailJS credentials from [emailjs.com](https://www.emailjs.com) — create a service, an email template with `from_name`, `from_email`, and `message` variables, then copy the three IDs above.
+
+**4. Run the local development server:**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                  # App Router routes & layout configurations
+│   ├── page.tsx          # Main homepage assembling primary sections
+│   ├── layout.tsx        # Root layout, fonts, metadata, and JSON-LD
+│   ├── sitemap.ts        # Auto-generated XML sitemap
+│   ├── robots.ts         # Auto-generated robots.txt
+│   ├── projects/[slug]/  # Dynamic project case study pages
+│   └── (routes)/         # Standalone feature pages (articles, events, gallery, etc.)
+├── components/
+│   ├── layout/           # Global navigation, footer, loaders, audio toggle
+│   ├── sections/         # Feature-specific homepage section components
+│   ├── chatbot/          # Interactive portfolio AI assistant component
+│   └── ui/               # Reusable UI primitives (buttons, modals, containers)
+├── data/                 # Centralized content files (skills, projects, bio)
+├── types/                # Global TypeScript definitions and interfaces
+├── lib/                  # Utility functions and API clients (GitHub REST helper)
+└── hooks/                # Custom React hooks (useSound, useActiveSection)
+```
+
+*Portfolio content is organized in `src/data/`, making it easier to update personal information, skills, projects, certificates, and other sections without modifying the main UI components.*
+
+---
+
+## 📦 Available Scripts
+
+```bash
+npm run dev      # Start local dev server
+npm run build    # Production build (also type-checks and lints)
+npm run start    # Run the production build locally
+npm run lint     # Lint only
+```
+
+---
+
+## 📄 License
+
+This repository represents my personal portfolio. You are welcome to explore the implementation and use it as inspiration for your own projects. Please do not reproduce my personal content or present my work as your own.
 
 ---
 
 <div align="center">
 
-`BUILD • AUTOMATE • SCALE • REPEAT`
+  **Designed & Developed by [Sadew Upendra](https://github.com/sadewupendra)**
 
-**Designed & maintained by Sadew Upendra · © 2026**
+  *If you like this project, consider giving it a ⭐ on GitHub!*
 
 </div>
