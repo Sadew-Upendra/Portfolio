@@ -24,7 +24,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const title = "Sadew Upendra — Full-Stack Developer";
+const title = "Sadew Upendra | Full-Stack Developer";
 const description =
   "Portfolio of Sadew Upendra, a Computer Science undergraduate and full-stack developer working across Java/Spring Boot and the React/Node ecosystem. Explore projects, skills, and certifications.";
 
