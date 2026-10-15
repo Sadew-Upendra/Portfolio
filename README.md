@@ -17,15 +17,13 @@
 
 ---
 
-<!--
 ## 📸 Preview
 
 <div align="center">
-  <img src="public/images/portfolio-preview.png" alt="Sadew Upendra Portfolio Preview" width="100%" style="border-radius: 8px;" />
+  <img src="public/images/preview/portfolio-preview.png" alt="Sadew Upendra Portfolio Preview" width="600" style="max-width: 100%; height: auto; border-radius: 8px;" />
 </div>
 
 ---
--->
 
 ## ✨ Features
 
@@ -142,7 +140,7 @@ This repository represents my personal portfolio. You are welcome to explore the
 
 <div align="center">
 
-  **Designed & Developed by [Sadew Upendra](https://github.com/sadewupendra)**
+  **Designed & Developed by [Sadew Upendra](https://github.com/Sadew-Upendra)**
 
   *If you like this project, consider giving it a ⭐ on GitHub!*
 
